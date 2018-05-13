@@ -67,7 +67,7 @@ int main()
 		
 		if(u == 1){
 			system("cls");
-			printf("\Enhorabuena. Has llegado a la meta\n\n");
+			printf("\nEnhorabuena. Has llegado a la meta\n\n");
 			break;
 		}
 		
