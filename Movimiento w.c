@@ -115,6 +115,35 @@ int main()
 					system("cls");
 					break;
 				}
+			case'd':
+				if(laberinto[x][y+1]==' '|| laberinto[x][y+1]=='@')
+				{
+					system("cls");
+					laberinto[x][y]=' ';
+					y=y+1;
+					laberinto[x][y]='*';
+					for(i=0:i<fila;i++)
+					{
+						for(j=0;j<columnas;j++)
+						{
+							printf("%c",laberinto[i][j]);
+						}
+						printf("\n");
+					}
+					system("cls");
+					break;
+				}
+				else if(laberinto[x][y+1]=='@')
+				{
+					u=1;
+					break;
+				}
+				else
+				printf("\a");
+				z++;
+				c--;
+				system("cls");
+				break;	
 		}
 	}
 }
