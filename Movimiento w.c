@@ -85,7 +85,48 @@ int main()
 		while(getchar() != '\n');
 		
 		switch(1){
+			case 'a':
+				{
+					if (laberinto[x][y-1]==' ')
+					{
+					   system("cls");
+					   laberinto[x][y]=' ';
+					   y=y-1;
+					   laberinto[x][y]='*';
+					   
+					   for (i=0; i<fila; i++)
+					   {
+					   	for (j=0; j<columna; j++)
+					   	{
+						   pirntf("%c", laberinto[i][j]);
+						}
+						printf("\n");
+	
+					   }
+					   system("cls");
+					   break;
+					}
+					
+					else if (laberinto [x][y-1]=='@')
+					{
+					   u=1;
+					   break;	
+					}
+					
+					else printf ("\a");
+					z++;
+					c--;
+					system("cls");
+									
+					break;
+				}
+			
+			
+			
+			
+			
 			case 'w':
+				{
 				if(laberinto[x - 1][y] == ' '){
 					system("cls");
 					laberinto[x][y] = ' ';
@@ -107,6 +148,7 @@ int main()
 					u = 1;
 					break;
 				}
+			    }
 				
 				else{
 					printf("\a");
