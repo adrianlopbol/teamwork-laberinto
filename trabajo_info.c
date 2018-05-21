@@ -58,7 +58,7 @@ int main()
 			fclose(pf);
 			break;
 			}
-	}    
+	    }     
 			
 		case 2:
 		{
@@ -188,8 +188,133 @@ int main()
 						
 						
 					} //He quitado los errores que habían. Solo eran las llaves
-			}
+	}
+	
+	while(1)
+	{
+		
+		if(u == 1){
+			system("cls");
+			printf("\nEnhorabuena. Has llegado a la meta\n\n");
+			break;
+		}
+		
+		for(i = 0; i < fila; i++){
+			for(j = 0; j < columna; j++)
+				printf("%c", laberinto[i][j]);
+				
+			printf("\n");
+		}
+		
+		laberinto[x][y] = '*';
+		c++;
+		printf("\n");
+		scanf_s("%c", &1);
+		while(getchar() != '\n');
+		
+		switch(1){
+			case 'a':
+				{
+					if (laberinto[x][y-1]==' ')
+					{
+					   system("cls");
+					   laberinto[x][y]=' ';
+					   y=y-1;
+					   laberinto[x][y]='*';
+					   
+					   for (i=0; i<fila; i++)
+					   {
+					   	for (j=0; j<columna; j++)
+					   	{
+						   pirntf("%c", laberinto[i][j]);
+						}
+						printf("\n");
+	
+					   }
+					   system("cls");
+					   break;
+					}
+					
+					else if (laberinto [x][y-1]=='@')
+					{
+					   u=1;
+					   break;	
+					}
+					
+					else printf ("\a");
+					z++;
+					c--;
+					system("cls");
+									
+					break;
+				}
+			
+			
+			case 'w':
+				{
+				if(laberinto[x - 1][y] == ' '){
+					system("cls");
+					laberinto[x][y] = ' ';
+					x = x - 1;
+					laberinto[x][y] = '*';
+					
+					for(i = 0; i < fila; i++){
+						for(j = 0; j < columna; j++)
+							printf("%c", laberinto[i][j]);
+							
+						printf("\n");
+					}
+					
+					system("cls");
+					break;
+				}
+				
+				else if(laberinto[x -1][y] == '@'){
+					u = 1;
+					break;
+				}
+			    }
+				
+				else{
+					printf("\a");
+					z++;
+					c--;
+					system("cls");
+					break;
+				}
+			case'd':
+				if(laberinto[x][y+1]==' '|| laberinto[x][y+1]=='@')
+				{
+					system("cls");
+					laberinto[x][y]=' ';
+					y=y+1;
+					laberinto[x][y]='*';
+					for(i=0:i<fila;i++)
+					{
+						for(j=0;j<columnas;j++)
+						{
+							printf("%c",laberinto[i][j]);
+						}
+						printf("\n");
+					}
+					system("cls");
+					break;
+				}
+				else if(laberinto[x][y+1]=='@')
+				{
+					u=1;
+					break;
+				}
+				else
+				printf("\a");
+				z++;
+				c--;
+				system("cls");
+				break;	
+		}
+	}
+}
 			
 		
-		}
+}
 
