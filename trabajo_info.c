@@ -311,6 +311,32 @@ int main()
 				c--;
 				system("cls");
 				break;	
+			case 's':
+				if (laberinto[x + 1][y] == ' ')
+			{
+
+				system("cls");
+				laberinto[x][y] = ' ';
+				x = x + 1;
+				laberinto[x][y] = '*';
+				for (i = 0; i < fila; i++) {
+					for (j = 0; j < columna; j++)
+					{
+						printf("%c", laberinto[i][j]);
+					}
+					printf("\n");
+				}system("cls"); break;
+			}
+			else if (laberinto[x + 1][y] == '@')
+			{
+				u = 1; break;
+			}
+			else printf("\a"); 
+			z++; 
+			c--; 
+			system("cls");
+			break;
+				
 		}
 	}
 }
