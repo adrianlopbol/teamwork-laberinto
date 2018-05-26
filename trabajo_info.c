@@ -309,6 +309,48 @@ int main()
 		            fclose(pf);
 					break;
 			}	
+		case 5:
+			{
+				pf1 = fopen("partidaGuardada.txt", "r");
+				fscanf(pf1, "%d", &x);
+				fscanf(pf1, "%d", &y);
+				fclose(pf1);
+		
+				pf = fopen("labfac1.txt", "r");
+
+				fscanf(pf, "%d", &fila);
+				fscanf(pf, "%d", &columna);
+				fgetc(pf);
+				// Creamos en memoria el laberinto reservando la memoria
+				laberinto = (char**)malloc(fila * sizeof(char*));
+				if ('\0' == laberinto)
+				{
+					fprintf(stderr, "Problemas al reservar la memoria\n");
+					return(-1);
+				}
+				// Creamos en memoria cada una de las posiciones del array
+	
+				for ( en = 0; en < fila; en++)
+				{
+					laberinto[en] = (char*)malloc((columna + 1) * sizeof(char));
+					if ( '\0'== laberinto[en])
+					{
+						fprintf(stderr, "Problemas al reservar la memoria\n");
+						return(-1);
+					}
+				//Para poder ser liberado.
+				laberinto[en][columna] = '\0';
+				}	
+
+				for (i = 0; i < fila; i++)
+				{
+					fgets(laberinto[i], columna + 1, pf);
+					while (fgetc(pf) != '\n') {}
+				}
+				fclose(pf);
+
+			break;
+		}
 			
 			
 						
