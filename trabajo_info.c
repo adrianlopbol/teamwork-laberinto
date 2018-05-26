@@ -65,7 +65,7 @@ int main()
 			random=rand()%4;
 			switch (random)
 			{
-				case 0:
+				case 2.0:
 					{
 						fila=0;
 						columna=0;
@@ -106,7 +106,7 @@ int main()
 					}   
 					
 				
-				case 1:
+				case 2.1:
 					{
 						fila=0;
 						columna=0;
@@ -145,7 +145,7 @@ int main()
 						
 						}
 				
-				case 2:
+				case 2.2:
 					{
 						fila=0;
 						columna=0;
@@ -186,7 +186,7 @@ int main()
 						break;
 					}
 					
-					case 3:
+					case 2.3:
 						{
 							
 							fila = 0;
@@ -198,7 +198,7 @@ int main()
 							fgetc(pf);
 							
 							//Creamos en memoria el laberinto reservando memoria
-							laberinto = (char**)malloc(fila * siezof(char*));
+							laberinto = (char**)malloc(fila * sizeof(char*));
 							
 							if('\0' == laberinto){
 								
@@ -213,7 +213,7 @@ int main()
 								
 								if(laberinto[en] == '\0'){
 									
-									fprintf("Error al reservar memoria\n");
+									printf("Error al reservar memoria\n");
 									return(-1);
 								}
 								
@@ -231,7 +231,42 @@ int main()
 							fclose(pf);
 							break;
 						}
-						
+		case 3:
+			{
+				fila=0;
+				columna=0;
+				pf=fopen("Labdif1.txt", "r");
+				scaf(pf, "%d", &fila);
+				scanf(pf, "%d", &columna);
+				pgetc(pf);
+				//Creamos en memoria el laberinto, reservando la memoria
+				laberinto= (char**)malloc(fila*sizeof(char*));
+				if ('\0' == laberinto)
+				{
+					printf(stderr, "Problemas al reservar la memoria.\n");
+					return(-1);
+				}
+				//Creamos en la memoria cada una de las posiciones del array
+			    for (en=0; en<fila; en++)
+			    {
+			    	laberinto[en]= (char*)malloc((columna+1)*sizeof(char));
+			    	if ('\0'==laberinto[en])
+			    	{
+			    		printf(stderr, "Problemas al reservar la memoria.\n");
+			    		return(-1);
+					}
+					//Y para poder ser liberado
+					laberinto[en][columa]='\0';	
+				}
+				
+				for(i=0; i<fila; i++)
+				{
+					fgets(laberinto[i], columna+1, pf);
+					while (fgetc(pf) != '\n');
+				}
+				fclose(pf);
+				break;
+			}
 						
 					} //He quitado los errores que había. Solo eran las llaves
 	}
