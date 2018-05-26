@@ -65,11 +65,11 @@ int main()
 			random=rand()%4;
 			switch (random)
 			{
-				case 2.0:
+				case 0:
 					{
 						fila=0;
 						columna=0;
-						pf=open("Labmed1.txt", "r"); //Hay que crearlo
+						pf=fopen("Labmed1.txt", "r"); //Hay que crearlo
 						fscanf(pf, "%d", &fila);
 						fscanf(pf, "%d", &columna);
 						fgetc(pf);
@@ -106,11 +106,11 @@ int main()
 					}   
 					
 				
-				case 2.1:
+				case 1:
 					{
 						fila=0;
 						columna=0;
-						pf=open("Labmed2.txt", "r"); //Hay que crearlo
+						pf=fopen("Labmed2.txt", "r"); //Hay que crearlo
 						fscanf(pf, "%d", &fila);
 						fscanf(pf, "%d", &columna);
 						fgetc(pf);
@@ -143,13 +143,13 @@ int main()
 						fclose(pf);
 						break;
 						
-						}
+					}
 				
-				case 2.2:
+				case 2:
 					{
 						fila=0;
 						columna=0;
-						pf=open("Labmed3.txt", "r"); //Hay que crearlo
+						pf=fopen("Labmed3.txt", "r"); //Hay que crearlo
 						fscanf(pf, "%d", &fila);
 						fscanf(pf, "%d", &columna);
 						fgetc(pf);
@@ -179,71 +179,78 @@ int main()
 						{
 							fgets(laberinto[i], columna+1, pf);
 							while (fgetc(pf) != '\n'); 
-							}
 						}
+					
 						
 						fclose(pf);
 						break;
 					}
 					
-					case 2.3:
-						{
+				case 3:
+					{
 							
-							fila = 0;
-							columna = 0;
-							pf = fopen("LabMed4.txt", "r");
+						fila = 0;
+						columna = 0;
+						pf = fopen("LabMed4.txt", "r");
 							
-							fscanf(pf, "%d", &fila);
-							fscanf(pf, "%d", &columna);
-							fgetc(pf);
+						fscanf(pf, "%d", &fila);
+						fscanf(pf, "%d", &columna);
+						fgetc(pf);
 							
-							//Creamos en memoria el laberinto reservando memoria
-							laberinto = (char**)malloc(fila * sizeof(char*));
+						//Creamos en memoria el laberinto reservando memoria
+						laberinto = (char**)malloc(fila * sizeof(char*));
 							
-							if('\0' == laberinto){
-								
-								fprintf(stderr, "Error al reservar memoria\n");
-								return(-1);
-							}
-							
-							//Creamos en memoria cada una de las posiciones del array
-							for(en = 0; en < fila; en++){
-								
-								laberinto[en] = (char*)malloc((columna + 1) * sizeof(char));
-								
-								if(laberinto[en] == '\0'){
-									
-									printf("Error al reservar memoria\n");
-									return(-1);
-								}
-								
-								//Para poder ser liberado
-								laberinto[en][columna] = '\0';
-							}
-							
-							for(i = 0; i < fila; i++){
-								
-								fgets(laberinto[i], columna + 1, pf);
-								while(fgetc(pf) != '\n'){
-								}
-							}
-							
-							fclose(pf);
-							break;
+						if('\0' == laberinto){
+						
+						fprintf(stderr, "Error al reservar memoria\n");
+						return(-1);
 						}
+							
+						//Creamos en memoria cada una de las posiciones del array
+						for(en = 0; en < fila; en++){
+								
+						laberinto[en] = (char*)malloc((columna + 1) * sizeof(char));
+								
+						if(laberinto[en] == '\0'){
+									
+						printf("Error al reservar memoria\n");
+						return(-1);
+						}
+								
+						//Para poder ser liberado
+						laberinto[en][columna] = '\0';
+						}
+							
+						for(i = 0; i < fila; i++){
+								
+						fgets(laberinto[i], columna + 1, pf);
+						while(fgetc(pf) != '\n'){
+						}
+						}
+							
+						fclose(pf);
+						break;
+					}
+			}
+		{
+			default:
+			break;
+		}
+		break;
+	    }
 		case 3:
 			{
 				fila=0;
 				columna=0;
 				pf=fopen("Labdif1.txt", "r");
-				scaf(pf, "%d", &fila);
-				scanf(pf, "%d", &columna);
+				fscaf(pf, "%d", &fila);
+				fscanf(pf, "%d", &columna);
 				pgetc(pf);
 				//Creamos en memoria el laberinto, reservando la memoria
 				laberinto= (char**)malloc(fila*sizeof(char*));
 				if ('\0' == laberinto)
 				{
-					printf(stderr, "Problemas al reservar la memoria.\n");
+					fprintf(stderr, "Problemas al reservar la memoria.\n");
 					return(-1);
 				}
 				//Creamos en la memoria cada una de las posiciones del array
@@ -252,11 +259,11 @@ int main()
 			    	laberinto[en]= (char*)malloc((columna+1)*sizeof(char));
 			    	if ('\0'==laberinto[en])
 			    	{
-			    		printf(stderr, "Problemas al reservar la memoria.\n");
+			    		fprintf(stderr, "Problemas al reservar la memoria.\n");
 			    		return(-1);
 					}
 					//Y para poder ser liberado
-					laberinto[en][columa]='\0';	
+					laberinto[en][columna]='\0';	
 				}
 				
 				for(i=0; i<fila; i++)
@@ -267,9 +274,46 @@ int main()
 				fclose(pf);
 				break;
 			}
+			
+		case 4:
+		    {
+		    	fila = 0;
+		        columna = 0;
+		        pf = fopen("Labgodmode.txt", "r");
+		        fscanf(pf , "%d", &fila);
+		        fscanf(pf, "%d", &columna);
+		        fgetc(pf);
+		        //creamos memoria
+		        laberinto = (char**)malloc(fila * sizeof(char*));
+		         if ('\0' == laberinto)
+				 {
+			        fprintf(stderr, "Problemas al reservar la memoria\n");
+			        return(-1);
+		         }
+		        for ( en = 0; en < fila; en++)
+		         {
+			        laberinto[en] = (char*)malloc((columna+1) * sizeof(char));
+			        if ('\0' == laberinto[en])
+					{
+				        fprintf(stderr, "Problemas al reservar la memoria\n");
+				        return(-1);
+			        }
+			         //Para poder ser liberado.
+			        laberinto[en][columna] = '\0';
+		         }
+		        for (i = 0; i < fila; i++)
+		         {
+			        fgets(laberinto[i], columna+1, pf);
+			        while(fgetc(pf)!='\n'){}
+		         }
+		            fclose(pf);
+					break;
+			}	
+			
+			
 						
-					} //He quitado los errores que había. Solo eran las llaves
-	}
+	} //He quitado los errores que había. Solo eran las llaves
+
 	
 	while(1)
 	{
@@ -290,7 +334,7 @@ int main()
 		laberinto[x][y] = '*';
 		c++;
 		printf("\n");
-		scanf_s("%c", &1);
+		scanf_s("%c", &l);
 		while(getchar() != '\n');
 		
 		switch(1){
@@ -332,8 +376,8 @@ int main()
 			
 			
 			case 'w':
+				if(laberinto[x - 1][y] == ' ')
 				{
-				if(laberinto[x - 1][y] == ' '){
 					system("cls");
 					laberinto[x][y] = ' ';
 					x = x - 1;
@@ -354,7 +398,6 @@ int main()
 					u = 1;
 					break;
 				}
-			    }
 				
 				else{
 					printf("\a");
@@ -370,9 +413,9 @@ int main()
 					laberinto[x][y]=' ';
 					y=y+1;
 					laberinto[x][y]='*';
-					for(i=0:i<fila;i++)
+					for(i=0;i<fila;i++)
 					{
-						for(j=0;j<columnas;j++)
+						for(j=0;j<columna;j++)
 						{
 							printf("%c",laberinto[i][j]);
 						}
@@ -420,8 +463,5 @@ int main()
 				
 		}
 	}
-}
-			
-		
 }
 
